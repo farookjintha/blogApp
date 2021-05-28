@@ -1,16 +1,6 @@
 import {API} from '../config';
 import queryString from 'query-string';
 
-export const getProducts = (sortBy) => {
-    return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
-        method: "GET"
-    })
-    .then(res => {
-        return res.json()
-    })
-    .catch(error => console.log(error));
-}
-
 export const getBlogs = (sortBy) => {
     return fetch(`${API}/blogs?sortBy=${sortBy}&order=desc&limit=6`, {
         method: "GET"
@@ -64,6 +54,16 @@ export const list = (params) => {
 
 export const read = (blogId) => {
     return fetch(`${API}/blog/${blogId}`, {
+        method: "GET"
+    })
+    .then(res => {
+        return res.json()
+    })
+    .catch(error => console.log(error));
+}
+
+export const getGenre = (genreId) => {
+    return fetch(`${API}/genre/${genreId}`, {
         method: "GET"
     })
     .then(res => {

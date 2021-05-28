@@ -1,7 +1,6 @@
 import React, {Fragment} from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import {signOut, isAuthenticated} from '../auth'
-import { itemTotal } from './cartHelper';
 
 const isActive = (history, path) => {
     if(history.location.pathname === path){

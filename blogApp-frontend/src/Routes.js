@@ -12,7 +12,6 @@ import AddGenre from './admin/AddGenre';
 import AddBlog from './blog/AddBlog';
 import SearchByGenre from './core/SearchByGenre';
 import ViewBlog from './blog/ViewBlog';
-import Cart from './core/Cart';
 
 
 const Routes = () =>{
@@ -22,7 +21,6 @@ const Routes = () =>{
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/search" exact component={SearchByGenre} />
-                <Route path="/cart" exact component={Cart} />
                 <Route path="/signin" exact component={Signin} />
                 <Route path="/signup" exact component={Signup} />
                 <Route path="/blog/:blogId" exact component={ViewBlog} />

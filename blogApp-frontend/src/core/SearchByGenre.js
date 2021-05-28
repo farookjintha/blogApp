@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import Layout from './Layout';
 import Card from './Card';
 import { getGenres, getFilteredBlogs } from './apiCore';
-import { prices } from './fixedPrices';
 import Checkbox from './Checkbox';
 import RadioBox from './RadioBox';
 
