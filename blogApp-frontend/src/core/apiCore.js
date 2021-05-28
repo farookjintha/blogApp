@@ -21,8 +21,8 @@ export const getBlogs = (sortBy) => {
     .catch(error => console.log(error));
 }
 
-export const getCategories = () => {
-    return fetch(`${API}/categories`, {
+export const getGenres = () => {
+    return fetch(`${API}/genres`, {
         method: "GET"
     })
     .then(res => {
@@ -31,7 +31,7 @@ export const getCategories = () => {
     .catch(error => console.log(error));
 }
 
-export const getFilteredProducts = (skip, limit, filters = {}) => {
+export const getFilteredBlogs = (skip, limit, filters = {}) => {
     const data = {
         limit, skip, filters
     }
@@ -62,8 +62,8 @@ export const list = (params) => {
     .catch(error => console.log(error));
 }
 
-export const read = (productId) => {
-    return fetch(`${API}/product/${productId}`, {
+export const read = (blogId) => {
+    return fetch(`${API}/blog/${blogId}`, {
         method: "GET"
     })
     .then(res => {
@@ -72,8 +72,8 @@ export const read = (productId) => {
     .catch(error => console.log(error));
 }
 
-export const listRelated = (productId) => {
-    return fetch(`${API}/products/related/${productId}`, {
+export const listRelated = (blogId) => {
+    return fetch(`${API}/blogs/related/${blogId}`, {
         method: "GET"
     })
     .then(res => {

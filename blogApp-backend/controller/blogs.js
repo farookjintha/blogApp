@@ -192,7 +192,7 @@ exports.update = (req, res) => {
         }
     }
  
-    Product.find(findArgs)
+    Blog.find(findArgs)
         .select("-photo")
         .populate("genre")
         .sort([[sortBy, order]])
@@ -220,3 +220,21 @@ exports.update = (req, res) => {
 
     next();
 }
+
+exports.listRelated = (req, res) => {
+    let limit = req.query.limit ? req.query.limit : 6;
+
+    Blog.find({ _id: {$ne: req.blog}, genre: req.blog.genre})
+        .limit(limit)
+        .populate('genre', '_id name')
+        .exec((err, blogs) => {
+            if(err){
+                return res.status(400).json({
+                    error: "Blogs not found"
+                });
+            }
+
+            res.json(blogs);
+        });
+
+ }
