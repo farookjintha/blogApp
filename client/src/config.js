@@ -1,1 +1,1 @@
-export const API = process.env.APP_URL;
+export const API = "https://blog-app-farookjintha.herokuapp.com/api";

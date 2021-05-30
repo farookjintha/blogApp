@@ -21,8 +21,9 @@ const Home = () => {
 
     const loadBlogsLatest = () => {
         getBlogs('createdAt').then(data => {
-            if(data.error){
-                setError(data.error);
+            console.log("DATA LATEST:", data)
+            if(data.err){
+                setError(data.err);
             }else{
                 console.log("Blogs: ", data)
                 setBlogsLatest(data);

@@ -39,6 +39,7 @@ const Signup = () => {
         console.log({name, email, password, role})
         signUp({name, email, password, role})
         .then(data => {
+            console.log(data)
             if(data.err){
                 setValues({...values, error: data.err, success:false})
             }else{
