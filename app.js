@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const expressValidator = require('express-validator');
+const wakeUpDyno = require("./wakeByDyno.js");
 
 //Import Routes
 const authRoutes = require('./routes/auth');
@@ -15,6 +16,9 @@ const blogRoutes = require('./routes/blogs');
 
 //App
 const app = express();
+app.get('/',(req, res)=>{
+    res.render("App Running..");
+})
 
 //Database
 mongoose.connect("mongodb+srv://blogApp:blogApp@blogapp.vnwb9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
@@ -40,11 +44,10 @@ app.use('/api', userRoutes);
 app.use('/api', blogRoutes);
 app.use('/api', genreRoutes);
 
-
+const DYNO_URL = "https://blog-app-farookjintha.herokuapp.com/api/blogs"
 const port  = process.env.PORT || 8000
-
 const server = app.listen(port, () =>{
-    const serverPort = server.address().port;
-    console.log(`The server is running on port ${serverPort}`);
+    wakeUpDyno(DYNO_URL);
+    console.log(`The server is running on port ${port}`);
 });
 
