@@ -10,7 +10,6 @@
   "scripts": {
     "start": "concurrently --kill-others-on-fail \"npm run backend\" \"npm run start --prefix client\" ",
     "backend": "nodemon app.js",
-    "client": "cd client && npm start",
     "build": "cd client && npm run build",
     "install-client": "cd client && npm install",
     "heroku-postbuild": "npm run install-client && npm run build"
