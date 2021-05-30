@@ -1,5 +1,6 @@
 require('dotenv').config({ path: './.env' })
 const express = require('express');
+const http = require('http');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
@@ -16,7 +17,8 @@ const blogRoutes = require('./routes/blogs');
 
 //App
 const app = express();
-app.get('/',(req, res)=>{
+const server = http.createServer(app);
+server.get('/',(req, res)=>{
     res.render("App Running..");
 })
 
@@ -32,21 +34,21 @@ mongoose.connection.on('error', err => {
   });
 
 //Middleware
-app.use(morgan('dev'));
-app.use(bodyParser.json());
-app.use(cookieParser());
-app.use(expressValidator());
-app.use(cors());
+server.use(morgan('dev'));
+server.use(bodyParser.json());
+server.use(cookieParser());
+server.use(expressValidator());
+server.use(cors());
 
 //routes middleware
-app.use('/api', authRoutes);
-app.use('/api', userRoutes);
-app.use('/api', blogRoutes);
-app.use('/api', genreRoutes);
+server.use('/api', authRoutes);
+server.use('/api', userRoutes);
+server.use('/api', blogRoutes);
+server.use('/api', genreRoutes);
 
 const DYNO_URL = "https://blog-app-farookjintha.herokuapp.com/api/blogs"
 const port  = process.env.PORT || 8000
-const server = app.listen(port, () =>{
+server.listen(port, () =>{
     wakeUpDyno(DYNO_URL);
     console.log(`The server is running on port ${port}`);
 });
