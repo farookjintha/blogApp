@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const path = require('path');
 const expressValidator = require('express-validator');
 const wakeUpDyno = require("./wakeByDyno.js");
 
@@ -45,6 +46,13 @@ app.use('/api', authRoutes);
 app.use('/api', userRoutes);
 app.use('/api', blogRoutes);
 app.use('/api', genreRoutes);
+
+
+app.use(express.static(path.resolve(__dirname, "./client/build")));
+
+app.get("*", function (request, response) {
+  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
 
 const DYNO_URL = "https://blog-app-farookjintha.herokuapp.com/api/blogs"
 const port  = process.env.PORT || 8000
