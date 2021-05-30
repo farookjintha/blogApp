@@ -1,3 +1,4 @@
+require('dotenv').config()
 const jwt = require('jsonwebtoken'); // to generate signed token
 const expressJwt = require('express-jwt'); // for authorization check
 
