@@ -17,7 +17,7 @@ const blogRoutes = require('./routes/blogs');
 const app = express();
 
 //Database
-mongoose.connect(process.env.ATLAS_DB, {
+mongoose.connect("mongodb+srv://blogApp:blogApp@blogapp.vnwb9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
     useNewUrlParser: true, 
     useCreateIndex: true,
     useUnifiedTopology: true
