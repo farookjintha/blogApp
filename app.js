@@ -44,7 +44,8 @@ app.use('/api', genreRoutes);
 
 const port  = process.env.PORT || 8000
 
-app.listen(port, () =>{
-    console.log(`The server is running on port ${port}`);
+const server = app.listen(port, () =>{
+    const serverPort = server.address().port;
+    console.log(`The server is running on port ${serverPort}`);
 });
 
