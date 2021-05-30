@@ -18,7 +18,7 @@ const blogRoutes = require('./routes/blogs');
 //App
 const app = express();
 const server = http.createServer(app);
-server.get('/',(req, res)=>{
+app.get('/',(req, res)=>{
     res.render("App Running..");
 })
 
@@ -34,17 +34,17 @@ mongoose.connection.on('error', err => {
   });
 
 //Middleware
-server.use(morgan('dev'));
-server.use(bodyParser.json());
-server.use(cookieParser());
-server.use(expressValidator());
-server.use(cors());
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(expressValidator());
+app.use(cors());
 
 //routes middleware
-server.use('/api', authRoutes);
-server.use('/api', userRoutes);
-server.use('/api', blogRoutes);
-server.use('/api', genreRoutes);
+app.use('/api', authRoutes);
+app.use('/api', userRoutes);
+app.use('/api', blogRoutes);
+app.use('/api', genreRoutes);
 
 const DYNO_URL = "https://blog-app-farookjintha.herokuapp.com/api/blogs"
 const port  = process.env.PORT || 8000
