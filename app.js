@@ -48,15 +48,15 @@ app.use('/api', blogRoutes);
 app.use('/api', genreRoutes);
 
 
-app.use(express.static(path.resolve(__dirname, "./client/build")));
+app.use(express.static(path.join(__dirname, "./client/build")));
 
 app.get("*", function (request, response) {
-  response.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+  response.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 const DYNO_URL = "https://blog-app-farookjintha.herokuapp.com/api/blogs"
 const port  = process.env.PORT || 8000
-server.listen(port, () =>{
+app.listen(port, () =>{
     wakeUpDyno(DYNO_URL);
     console.log(`The server is running on port ${port}`);
 });
