@@ -9,7 +9,7 @@ const Signin = () => {
 	// "password": "xxx123"
     const [values, setValues] = useState({
         email: 'farook@gmail.com',
-        password: 'farook123',
+        password: 'farook@123',
         error: '',
         loading: false,
         redirectToReferrer: false
